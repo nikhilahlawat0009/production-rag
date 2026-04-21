@@ -1,0 +1,28 @@
+[project]
+name = "production-rag"
+version = "0.1.0"
+description = "Production-grade retrieval platform with hybrid search"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.104.1",  # Async web framework for high-performance API
+    "uvicorn==0.24.0",   # ASGI server for FastAPI
+    "sentence-transformers==2.6.1",  # For semantic embeddings (compatible version)
+    "faiss-cpu==1.7.4",  # Vector search library for scalability
+    "rank-bm25==0.2.2",  # BM25 algorithm for keyword search
+    "PyPDF2==3.0.1",     # PDF text extraction
+    "pandas==2.1.3",     # CSV processing
+    "langchain==0.1.0",  # Text chunking utilities
+    "pydantic==2.5.0",   # Data validation
+    "httpx==0.25.2",     # HTTP client (if needed)
+    "python-multipart==0.0.6",  # File uploads in FastAPI
+    "chromadb==0.4.18",  # Vector database for persistence
+    "numpy==1.26.2",     # Numerical computations
+    "scikit-learn==1.3.2",  # Metrics calculation
+    "tqdm==4.66.1",      # Progress bars
+    "pytest==7.4.3",     # Testing framework
+    "huggingface-hub==0.19.4",  # HuggingFace compatibility
+]
+
+[tool.uv]
+dev-dependencies = []

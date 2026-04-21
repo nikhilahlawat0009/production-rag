@@ -10,7 +10,7 @@ async function performSearch() {
     }
 
     // Show loading state
-    resultsContainer.innerHTML = '<p class="results-placeholder">🔍 Searching...</p>';
+    resultsContainer.innerHTML = '<p class="results-placeholder">Searching...</p>';
 
     try {
         // Make API call to the search endpoint
@@ -42,7 +42,7 @@ async function performSearch() {
         console.error('Search error:', error);
         resultsContainer.innerHTML = `
             <div style="color: #e53e3e; text-align: center;">
-                <h3>❌ Search Failed</h3>
+                <h3>Search Failed</h3>
                 <p>Make sure the FastAPI server is running on port 8000</p>
                 <p>Error: ${error.message}</p>
                 <p><strong>To start the server:</strong></p>
@@ -115,7 +115,7 @@ function displayResults(data, query) {
     if (data.performance) {
         html += `
             <div style="margin-top: 20px; padding: 15px; background: #fff5f5; border-radius: 8px; border-left: 4px solid #fc8181;">
-                <h4 style="color: #c53030; margin-bottom: 10px;">⚡ Performance Metrics</h4>
+                <h4 style="color: #c53030; margin-bottom: 10px;">Performance Metrics</h4>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; font-size: 0.9rem;">
                     <div><strong>Total Time:</strong> ${data.performance.total_time_ms || 'N/A'}ms</div>
                     <div><strong>BM25 Time:</strong> ${data.performance.bm25_time_ms || 'N/A'}ms</div>
