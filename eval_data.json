@@ -1,0 +1,22 @@
+[
+  {"query": "What is the current Bank of England interest rate?", "relevant_indices": [0, 1]},
+  {"query": "How do changes in interest rates affect borrowing costs?", "relevant_indices": [1, 0, 7]},
+  {"query": "What is the role of central banks in inflation control?", "relevant_indices": [2, 0, 8]},
+  {"query": "What happened to the company revenue in Q1 2024?", "relevant_indices": [3]},
+  {"query": "Why did profit margins improve?", "relevant_indices": [4]},
+  {"query": "How is the UK financial services market performing?", "relevant_indices": [5, 0]},
+  {"query": "What FCA changes affect open banking?", "relevant_indices": [6]},
+  {"query": "Which companies benefit from higher interest rates?", "relevant_indices": [7]},
+  {"query": "Is inflation stable right now?", "relevant_indices": [8, 2]},
+  {"query": "What is causing stock market volatility?", "relevant_indices": [9]},
+  {"query": "How do monetary policy changes affect inflation?", "relevant_indices": [2, 0, 8]},
+  {"query": "Why would a business want operational efficiency?", "relevant_indices": [4, 3]},
+  {"query": "What are the consequences of rate hikes on mortgages?", "relevant_indices": [1, 0]},
+  {"query": "Who sets the benchmark interest rate in the UK?", "relevant_indices": [0, 2]},
+  {"query": "How much did revenue grow year-over-year?", "relevant_indices": [3]},
+  {"query": "What is a key metric for profit performance?", "relevant_indices": [4, 3]},
+  {"query": "Why does open banking need rapid compliance updates?", "relevant_indices": [6]},
+  {"query": "What makes a strong balance sheet useful in a high-rate market?", "relevant_indices": [7]},
+  {"query": "What is a sign that inflation is under control?", "relevant_indices": [8]},
+  {"query": "What macro trend is affecting investor confidence?", "relevant_indices": [9, 5]}
+]
