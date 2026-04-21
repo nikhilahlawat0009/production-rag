@@ -29,6 +29,25 @@ source ../.venv/bin/activate
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
+## View the Frontend (Documentation & Demo)
+
+The frontend includes all required submission documents and a live search demo:
+
+```bash
+cd /Users/sharmaishika/Documents/github/production-rag
+source .venv/bin/activate
+python serve_frontend.py
+```
+
+Then open http://localhost:8080 in your browser.
+
+**Frontend includes:**
+- 📝 Complete written report
+- 🏗️ Architecture decisions & diagrams
+- 🗺️ Roadmap for next features
+- 🤖 AI usage disclosure
+- 🎮 Live search demo (requires API running)
+
 ## API
 
 - POST `/api/v1/search/` - Search with query, weights, top_k
