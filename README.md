@@ -11,7 +11,7 @@ A hybrid search system combining BM25 keyword matching, semantic embeddings, and
 
 2. Create and activate the virtual environment:
    ```bash
-   cd /Users/sharmaishika/Documents/github/production-rag
+   cd production-rag
    uv venv --python 3.11
    source .venv/bin/activate
    ```
@@ -24,7 +24,7 @@ A hybrid search system combining BM25 keyword matching, semantic embeddings, and
 ## Run the API
 
 ```bash
-cd /Users/sharmaishika/Documents/github/production-rag/backend
+cd production-rag/backend
 source ../.venv/bin/activate
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
@@ -34,7 +34,7 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 The frontend includes all required submission documents and a live search demo:
 
 ```bash
-cd /Users/sharmaishika/Documents/github/production-rag
+cd production-rag
 source .venv/bin/activate
 python serve_frontend.py
 ```
