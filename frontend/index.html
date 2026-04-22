@@ -14,7 +14,7 @@
                 <a href="#overview" class="nav-link">Overview</a>
                 <a href="#report" class="nav-link">Report</a>
                 <a href="#architecture" class="nav-link">Architecture</a>
-                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#roadmap" class="nav-link">What's Next</a>
                 <a href="#ai-usage" class="nav-link">AI Usage</a>
                 <a href="#demo" class="nav-link">Live Demo</a>
             </div>
@@ -67,7 +67,7 @@
         </section>
 
         <section id="report" class="section">
-            <h2>📝 My Experience Building This</h2>
+            <h2>My Experience Building This</h2>
             <div class="report-content">
                 <h3>What I Actually Built</h3>
                 <p>I created a solid retrieval system that can handle hybrid search across financial documents. It combines BM25 keyword search with semantic embeddings and cross-encoder reranking - all configurable with different weights. The system supports incremental document ingestion (PDFs, text files, CSVs) with smart deduplication, and has a FastAPI backend that serves search results with detailed score breakdowns.</p>
@@ -145,31 +145,59 @@
         </section>
 
         <section id="roadmap" class="section">
-            <h2>Project Reflections</h2>
+            <h2>What I'd Ship Next (With One More Week)</h2>
             <div class="roadmap-content">
+                <p style="margin-bottom: 20px;"><strong>I prioritized getting core functionality working and thoroughly tested. Here are the features I'd add next if I had more time:</strong></p>
+
                 <div class="roadmap-item">
-                    <h3>What Made Search Quality Better</h3>
-                    <p>The hybrid approach was crucial - no single method was good enough alone. BM25 caught the exact matches, semantic search handled the intent, and reranking cleaned up the final results. The real breakthrough was realizing that different search methods complement each other rather than compete.</p>
+                    <h3>1. Query Expansion and Intent Detection</h3>
+                    <p>Most RAG systems fail on ambiguous queries. "What about rates?" could mean interest rates, exchange rates, or rate changes - in the context of financial documents, ambiguous. I'd implement query rewriting to expand terms and use minimal LLM calls to detect intent. This would add maybe 5-10% precision on ambiguous queries with cost of ~$0.0001 per query.</p>
                 </div>
 
                 <div class="roadmap-item">
-                    <h3>⚡ Performance Optimization Journey</h3>
-                    <p>Started with naive implementations that took 2+ seconds per query. Through profiling and iteration, got it down to &lt;200ms cold start. The key insight: don't rerank everything, just the top candidates. Also learned that chunk size directly impacts both quality and speed - had to balance context preservation with retrieval efficiency.</p>
+                    <h3>2. Adaptive Weight Selection</h3>
+                    <p>Currently using static weights (0.3/0.4/0.3), but some queries benefit from different combinations. Financial jargon queries prefer BM25, intent-based queries prefer semantic. I'd build a lightweight classifier that detects query type and applies best weights automatically. No extra latency since the decision happens before search. Expected impact: +3-5% precision overall.</p>
                 </div>
 
                 <div class="roadmap-item">
-                    <h3>Engineering Lessons Learned</h3>
-                    <p>Dependency management with ML libraries is a nightmare. What worked locally broke in different environments. Had to learn about version pinning, virtual environments, and the importance of lock files. Also realized that "production-ready" means thinking about monitoring, error handling, and graceful degradation from day one.</p>
+                    <h3>3. Result Deduplication and Clustering</h3>
+                    <p>Sometimes I get 5 results that all say the same thing - same information from different chunks or documents. Would cluster similar results together and show only the 5 best clusters, not 5 near-duplicates. Implementation is straightforward with cosine similarity on embeddings. Better UX and cleaner information.</p>
                 </div>
 
                 <div class="roadmap-item">
-                    <h3>Evaluation Changed Everything</h3>
-                    <p>Building the evaluation framework forced me to think about what "good" really means. The numbers showed that my initial approach was over-engineering - simpler chunking actually performed better. Also learned that synthetic data evaluation is useful but limited - real user queries might behave differently.</p>
+                    <h3>4. Search Analytics and Online Learning</h3>
+                    <p>Right now evaluation is offline. Real systems need feedback loops. I'd log every search + which result users actually clicked, then use this to adjust weights automatically. Could A/B test different configurations without manual tuning. This is where continuous improvement happens.</p>
                 </div>
 
                 <div class="roadmap-item">
-                    <h3>Cost Consciousness</h3>
-                    <p>Calculating the actual costs ($0.12 per 1K queries) made me appreciate the economics of ML systems. What seems cheap at small scale gets expensive fast. This project taught me to think about infrastructure costs alongside development effort.</p>
+                    <h3>5. Concurrent Request Handling and Caching</h3>
+                    <p>Implement result caching for repeated queries and parallel execution (run BM25 + semantic simultaneously in different threads). Connection pooling for model inference. Expected impact: p50 latency improves 30-40%, p95 improves 50%+ without sacrificing quality.</p>
+                </div>
+
+                <h3 style="margin-top: 30px;">Lessons Learned from This Project</h3>
+                <div class="roadmap-item">
+                    <h4>Hybrid Approach is Non-Negotiable</h4>
+                    <p>No single method was good enough alone. BM25 caught exact matches, semantic search handled intent, reranking cleaned up results. The breakthrough was realizing these methods complement each other.</p>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Chunk Size Directly Impacts Quality and Speed</h4>
+                    <p>Went through 4 different sizes. 512 characters with 50% overlap won because it preserved financial concepts while staying searchable. Numbers don't lie - evaluation caught this.</p>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Dependency Management is a Nightmare</h4>
+                    <p>ML libraries have version conflicts. What worked locally broke elsewhere. Had to learn about pinning, virtual environments, and lock files. This is why I use uv now.</p>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Evaluation Changes Everything</h4>
+                    <p>Building the evaluation framework forced me to define what "good" means. Numbers showed I was over-engineering - simpler approaches often worked better. Also learned synthetic evaluation has limits - real queries might behave differently.</p>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Cost Economics Matter</h4>
+                    <p>Calculating $0.12 per 1K queries made me appreciate ML infrastructure costs. What seems cheap at small scale gets expensive fast. This project taught me to think about operational costs from day one.</p>
                 </div>
             </div>
         </section>

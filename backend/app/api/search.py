@@ -54,10 +54,6 @@ class SearchResponse(BaseModel):
     results: List[SearchResult]
     count: int
     latency_ms: float
-    query: str
-    results: List[SearchResult]
-    count: int
-    latency_ms: float
 
 
 @router.post("/", response_model=SearchResponse)
