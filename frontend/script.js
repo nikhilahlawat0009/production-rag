@@ -47,8 +47,6 @@ async function performSearch() {
                 <p>Error: ${error.message}</p>
                 <p><strong>To start the server:</strong></p>
                 <code style="background: #fed7d7; padding: 10px; border-radius: 4px; display: block; margin: 10px 0;">
-                cd /Users/sharmaishika/Documents/github/production-rag<br>
-                source .venv/bin/activate<br>
                 cd backend<br>
                 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
                 </code>

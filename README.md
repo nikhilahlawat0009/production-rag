@@ -44,14 +44,7 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 The frontend includes all required submission documents and a live search demo:
 
 ```bash
-<<<<<<< HEAD
-cd production-rag
-source .venv/bin/activate
-python serve_frontend.py
-=======
-cd /Users/sharmaishika/Documents/github/production-rag
 uv run serve_frontend.py
->>>>>>> 487476f (final commit)
 ```
 
 Then open http://localhost:8080 in your browser.
